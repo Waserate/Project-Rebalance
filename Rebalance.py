@@ -57,7 +57,7 @@ def buy(): #ใช้ในการตั้งราคาซื้อ
 	'sym': 'THB_BTC', #คู่ที่เราจะเทรด
 	'amt': 10, # THB amount you want to spend
 	'rat': 260000, #ราคาที่ต้องการจะเข้าซื้อ 
-	'typ': 'limit', #รูปแบบที่จะเทรด
+	'typ': 'limit', #รูปแบบที่จะเทรด หากใช้ market จะเป็นเอาราคาปัจจุบันเลย
 	'ts': ts, #ต้องมีติดไว้ทุกอันที่ใช้ Post
     }
     signature = sign(data)
@@ -80,5 +80,33 @@ def sell(): #ขาย
 
     print('Payload with signature: ' + json_encode(data))
     response = requests.post(API_HOST + '/api/market/place-ask', headers=header, data=json_encode(data))
+    print (response.text)
 
-symbol_bitkub()
+def check_wallet():
+
+    print('Payload with signature: ' + json_encode(data))
+    response = requests.post(API_HOST + '/api/market/wallet', headers=header, data=json_encode(data))
+    print (response.text)
+
+def check_balance():
+    
+    print('Payload with signature: ' + json_encode(data))
+    response = requests.post(API_HOST + '/api/market/balances', headers=header, data=json_encode(data))
+    print (response.text)
+
+def sell_fiat(): #ขายจำนวนเงินบาทที่ต้องการ 
+    data = {
+	'sym': 'THB_BTC', #คู่ที่เราจะเทรด
+	'amt': 15, # BTC amount you want to sell
+	'rat': 260000, #ราคาที่ต้องการจะเข้าขาย
+	'typ': 'limit', #รูปแบบที่จะเทรด
+	'ts': ts, #ต้องมีติดไว้ทุกอันที่ใช้ Post
+    }
+    signature = sign(data)
+    data['sig'] = signature
+
+    print('Payload with signature: ' + json_encode(data))
+    response = requests.post(API_HOST + '/api/market/place-ask-by-fiat', headers=header, data=json_encode(data))
+    print (response.text)
+
+buy()
