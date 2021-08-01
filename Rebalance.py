@@ -81,3 +81,4 @@ def sell(): #ขาย
     print('Payload with signature: ' + json_encode(data))
     response = requests.post(API_HOST + '/api/market/place-ask', headers=header, data=json_encode(data))
 
+symbol_bitkub()
