@@ -144,6 +144,8 @@ def check_order():
 
 timer(TIME)
 
+
+
 '''
 เช็ค API ก่อนว่าทำงานได้ไหม def check api
 
