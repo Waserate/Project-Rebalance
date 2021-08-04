@@ -2,7 +2,8 @@ import hashlib
 import hmac
 import json
 import requests
-import time
+from time import time, sleep
+from datetime import datetime
 
 
 # API info
@@ -12,8 +13,8 @@ API_SECRET = b'202d71b0fc94501e290ac32ca023020c'
 
 # Config
 COIN_CURRENCY = 'THB_BTC'
-# TIME = 36000000
-TIME = 5
+# TIME = 3600 #เวลาเช็คทุกๆ 1 ชั่วโมง
+TIME = 60
 a = 0
 
 def json_encode(data):
@@ -119,21 +120,14 @@ def sell_fiat(): #ขายจำนวนเงินบาทที่ต้�
     response = requests.post(API_HOST + '/api/market/place-ask-by-fiat', headers=header, data=json_encode(data))
     print (response.text)
 
-def timer(): #ตัวนับเวลาถอยหลัง 
-    start_time = time.time()
-    seconds = TIME
-
-    while True :
-        current_time = time.time()
-        elapsed_time = current_time - start_time
-        # print(elapsed_time)
-        # print(seconds)
-        # print(elapsed_time % seconds)
-        x = elapsed_time % seconds
-        # print(x)
-        if (x == 0.0):
-            # print(elapsed_time % seconds)
-            print("Finished iterating in: " + str(int(elapsed_time))  + " seconds")
+def timer(seconds): #ตัวนับเวลาถอยหลัง 
+    total = 0
+    while True:
+        total = total + seconds
+        sleep(seconds - time() % seconds)
+        now = datetime.now()
+        current_time = now.strftime("%H:%M:%S")
+        print('sleep ' + str(total) + ' seconds ::: ' + current_time)
 
 def check_order():
     data = {
@@ -148,9 +142,7 @@ def check_order():
     response = requests.post(API_HOST + '/api/market/my-order-history', headers=header, data=json_encode(data))
     print (response.text)
 
-while True :
-    timer()
-print("zxczxczc")
+timer(TIME)
 
 '''
 เช็ค API ก่อนว่าทำงานได้ไหม def check api
