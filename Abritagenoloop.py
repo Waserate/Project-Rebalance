@@ -3,6 +3,11 @@ from binance import Client, ThreadedWebsocketManager, ThreadedDepthCacheManager
 from forex_python.converter import CurrencyRates
 import math
 
+from songline import Sendline
+
+token = 'pIqoRxZzDneaxmfYr6oQlMYN8MoKCtNSBbSefEMs2uE' 
+messenger = Sendline(token)
+
 import hashlib
 import hmac
 import json
@@ -85,13 +90,19 @@ result_bath = bnb_bitkub_rate - biannce_thai_rate
 print ("ส่วนต่างระหว่าง 2 เว็บเทรดคือ :",result_bath,"บาท")
 result_percentage = (((bnb_bitkub_rate - biannce_thai_rate)/biannce_thai_rate)*100)
 print ("ส่วนต่างระหว่าง 2 เว็บเทรดคือ :",result_percentage,"%")
+line_result_percentage = "ส่วนต่างระหว่าง 2 เว็บเทรดคือ :",result_percentage,"%"
 
 if result_percentage >= 5:
     print('สามารถทำ Abritage ได้')
-         #ส่งสัญญาณไปที่ Line เมื่อภถึง
+    messenger.sendtext(line_result_percentage)
+    messenger.sendtext("ทำได้")
+
 elif result_percentage <= 5:
     print ('ทำไมได้')
+    messenger.sendtext(line_result_percentage+'ทำไม่ได้')
+    # messenger.sendtext("ทำไม่ได้")
 
+# messenger.sendtext("Helloword")
 
 
 '''
