@@ -10,8 +10,8 @@ import requests
 from time import time, sleep
 from datetime import datetime
 
-api_key = 'BfdjwoRufZ8xsuY8rXX0MqAWEZDzckRvUuXf3LRonjH0UrkBI9BVDhLi355T6DzU'
-api_secret = 'IS64xcIututvwMoZKPvTgGIlX7SPzv1vbtzoOhDHcIRMP8LRUELCvUqt8onNJ9dp '
+api_key = '9PkHxLgQ3lGyHIeUi6tw1HsQrC6nBnHigw99WY7gfZAf597jaMxKMXPI58col6FC'
+api_secret = 'QxKdJLR1GIRRisjEb9Wn2j7McCZ8zgMCLz4rwbMAkPM2UqsOFKiEnijtxvKeGPXt'
 client = Client(api_key, api_secret)
 c = CurrencyRates()
 # API ของ Biannce 
@@ -102,10 +102,7 @@ def calculate():
    elif result_percentage <= 5:
          print ('ทำไมได้')
 
-
 timer(TIME)
-
-
 
 
 
@@ -124,7 +121,4 @@ Biannce = ไปเก็บราคาของฝั่ง Biance (BNB)
      print สูตรส่วนต่าง 
      print ไม่สามารถทำได้ 
 
-   
-    
-     
 '''
