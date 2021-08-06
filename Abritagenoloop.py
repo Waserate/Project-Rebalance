@@ -94,12 +94,12 @@ line_result_percentage = "ส่วนต่างระหว่าง 2 เว
 
 if result_percentage >= 5:
     print('สามารถทำ Abritage ได้')
-    messenger.sendtext(line_result_percentage)
+    # messenger.sendtext(line_result_percentage)
     messenger.sendtext("ทำได้")
 
 elif result_percentage <= 5:
-    print ('ทำไมได้')
-    messenger.sendtext(line_result_percentage+'ทำไม่ได้')
+    messenger.sendtext('ทำไมได้')
+    # messenger.sendtext(line_result_percentage)
     # messenger.sendtext("ทำไม่ได้")
 
 # messenger.sendtext("Helloword")
