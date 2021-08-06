@@ -101,33 +101,21 @@ def calculate():
    Line_result_bath = ("Diff (Bath):",result_bath)
 
    result_percentage = (((bnb_bitkub_rate - biannce_thai_rate)/biannce_thai_rate)*100)
-#    print ("Diff (%):",result_percentage)
+   print ("Diff (%):",result_percentage)
    Line_result_percentage = ("Diff (%):",result_percentage)
 
-   All_text_result = (Line_bnb_bitkub_rate , Line_result_bath ,Line_result_percentage)
-   messenger.sendtext(All_text_result)
-#    messenger.sendtext(Line_bnb_bitkub_rate) 
+#    All_text_result = (Line_bnb_bitkub_rate , Line_result_bath ,Line_result_percentage)
+# #    messenger.sendtext(All_text_result)
+# #    messenger.sendtext(Line_bnb_bitkub_rate) 
 
-#    if result_percentage >= 5:
-#         messenger.sendtext(Line_bnb_bitkub_rate)
-#         messenger.sendtext(Line_result_bath)
-#         messenger.sendtext(Line_result_percentage)
-#         messenger.sendtext('เกิน 5 เปอร์เซ็นต์ สามารถทำ Abritage ได้!!')
-#    elif result_percentage >= 3:
-#         messenger.sendtext(Line_bnb_bitkub_rate)
-#         messenger.sendtext(Line_result_bath)
-#         messenger.sendtext(Line_result_percentage)
-#         messenger.sendtext('เกิน 3 เปอร์เซ็นต์เกือบ Abritage ได้แล้ว')
-#    elif result_percentage >= 1:
-#         messenger.sendtext(Line_bnb_bitkub_rate)
-#         messenger.sendtext(Line_result_bath)
-#         messenger.sendtext(Line_result_percentage)
-#         messenger.sendtext('เกิน 1 เปอร์เซ็นต์กำลังจะมีโอกาส')
-#    elif result_percentage <= 0.99:
-#         messenger.sendtext(Line_bnb_bitkub_rate)
-#         messenger.sendtext(Line_result_bath)
-#         messenger.sendtext(Line_result_percentage)
-#         messenger.sendtext('ยังไม่มีโอกาส')
+   if result_percentage >= 5:
+        messenger.sendtext('เกิน 5 เปอร์เซ็นต์ สามารถทำ Abritage ได้!!')
+   elif result_percentage >= 3:
+        messenger.sendtext('เกิน 3 เปอร์เซ็นต์เกือบ Abritage ได้แล้ว')
+   elif result_percentage >= 1:
+        messenger.sendtext('เกิน 1 เปอร์เซ็นต์กำลังจะมีโอกาส')
+   elif result_percentage <= 0.99:
+        messenger.sendtext('ยังไม่มีโอกาส')
 
 timer(TIME)
 
