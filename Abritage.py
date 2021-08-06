@@ -1,3 +1,13 @@
+#โปรแกรม Bot BNB Checker Binance - Bikub (Tanatorn Vaskul)
+# หลักการทำงาน : Bot จะเข้าไปเช็คราคาที่เว็บ Biancne นำมาเทียบกับของ Bitkub ทุก ๆ 30 นาทีและส่งรายงาน
+# หากเกิน 3 เปอร์เซ็นต์จะแปลว่าใกล้ทำได้ แต่ถ้า 5 เปอร์เซ็นต์คือสามารถทำกำไรจากส่วนต่างได้ ให้เราทำการเทรด
+
+# วิธีการใช้งาน :
+# 1 ให้เรากรอก Line Token ที่เราต้องการส่งข้อมูลนี้ไป 
+# 2 ใส่ API และ API Key ของเราลงไป (เฉพาะของฝั่ง Biannce) 
+# 3 รันโปรแกรมแล้วรับแจ้งเตือนได้เลย 
+
+
 from binance import Client
 from forex_python.converter import CurrencyRates
 from songline import Sendline
@@ -9,19 +19,19 @@ from time import time, sleep
 from datetime import datetime
 
 #ส่วนของ Line Token
-token = 'PWCzRFGjpkxtUJ9JUzjq5wHIWsJ8sRkywCCkDA0suCd' 
+token = 'PWCzRFGjpkxtUJ9JUzjq5wHIWsJ8sRkywCCkDA0suCd'  #ที่ต้อง Config
 messenger = Sendline(token)
 
 # API ของ Biannce 
-api_key = '9PkHxLgQ3lGyHIeUi6tw1HsQrC6nBnHigw99WY7gfZAf597jaMxKMXPI58col6FC'
-api_secret = 'QxKdJLR1GIRRisjEb9Wn2j7McCZ8zgMCLz4rwbMAkPM2UqsOFKiEnijtxvKeGPXt' #ทำได้แค่ Read เท่านั้นไม่ต้องห่วง
+api_key = '9PkHxLgQ3lGyHIeUi6tw1HsQrC6nBnHigw99WY7gfZAf597jaMxKMXPI58col6FC'  #ที่ต้อง Config
+api_secret = 'QxKdJLR1GIRRisjEb9Wn2j7McCZ8zgMCLz4rwbMAkPM2UqsOFKiEnijtxvKeGPXt'  #ที่ต้อง Config ตั้งให้เป็น Read เท่านั้น 
 client = Client(api_key, api_secret)
 c = CurrencyRates()
 
 # API ของ Bitkub 
 API_HOST = 'https://api.bitkub.com'
-API_KEY = ''
-API_SECRET = b''
+API_KEY = '' #ไม่จำเป็นต้องใส่ก็ Get ค่าออกมาได้ 
+API_SECRET = b'' #ไม่จำเป็นต้องใส่ก็ Get ค่าออกมาได้ 
 
 #ปรับเวลา
 TIME= 10 
