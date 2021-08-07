@@ -17,18 +17,7 @@ import requests
 from time import time, sleep
 from datetime import datetime
 import configparser
-
-#ส่วนของ Line Token
-# token = ''  #ที่ต้อง Config
-# token = 'PWCzRFGjpkxtUJ9JUzjq5wHIWsJ8sRkywCCkDA0suCd'  #ที่ต้อง Config
-
-# API ของ Biannce 
-# api_key = ''  #ที่ต้อง Config
-# api_secret = ''  #ที่ต้อง Config ตั้งให้เป็น Read เท่านั้น 
-# api_key = '9PkHxLgQ3lGyHIeUi6tw1HsQrC6nBnHigw99WY7gfZAf597jaMxKMXPI58col6FC'  #ที่ต้อง Config
-# api_secret = 'QxKdJLR1GIRRisjEb9Wn2j7McCZ8zgMCLz4rwbMAkPM2UqsOFKiEnijtxvKeGPXt'  #ที่ต้อง Config ตั้งให้เป็น Read เท่านั้น 
-# client = Client(api_key, api_secret)
-c = CurrencyRates()
+c = CurrencyRates() 
 
 # API ของ Bitkub 
 API_HOST = 'https://api.bitkub.com'
@@ -94,7 +83,7 @@ def ticker(coin = 'THB_BNB', variable = 'highestBid'): #หาราคาต่
         result = responseJson[coin]
     else:
         result = responseJson[coin][variable]
-   #  print (result)
+        #print (result)
     return result
 
 def roundDec(number):
@@ -115,25 +104,12 @@ def calculate():
             # print ("Rate BNB (Binance) :",biannce_thai_rate,"Bath")
    
    bnb_bitkub_rate = ticker() #ได้ค่ามาไว้ในตัวแปร 
-#    print ("Rate BNB (Bitkub) :",bnb_bitkub_rate,"Bath") #ปริ้นออกมาใน Terminal 
-
    result_bath = bnb_bitkub_rate - biannce_thai_rate #ได้ค่ามาไว้ในตัวแปร 
-#    print ("Diff (Bath):",result_bath) #ปริ้นออกมาใน Terminal 
-
    result_percentage = (((bnb_bitkub_rate - biannce_thai_rate)/biannce_thai_rate)*100) #ได้ค่ามาไว้ในตัวแปร 
-#    print ("Diff (%):",result_percentage) #ปริ้นออกมาใน Terminal  
-#    print ('Rate BNB :',price_bnb,'USD\nRate BNB (Binance) :',biannce_thai_rate,'Bath\nRate BNB (Bitkub) :',bnb_bitkub_rate,'Bath\nDiff (Bath):',result_bath,'\nDiff (%):',result_percentage)
+
+#  print ('Rate BNB :',price_bnb,'USD\nRate BNB (Binance) :',biannce_thai_rate,'Bath\nRate BNB (Bitkub) :',bnb_bitkub_rate,'Bath\nDiff (Bath):',result_bath,'\nDiff (%):',result_percentage)
    print ('Rate BNB : %.2f USD\nRate BNB (Binance) : %.2f Baht\nRate BNB (Bitkub) : %.2f Baht\nDiff (Baht): %.2f Baht\nDiff (per.): %.2f %s'%(roundDec(price_bnb),roundDec(biannce_thai_rate),roundDec(bnb_bitkub_rate),roundDec(result_bath),roundDec(result_percentage), "%"))
    messenger.sendtext('\nRate BNB : %.2f USD\nRate BNB (Binance) : %.2f Baht\nRate BNB (Bitkub) : %.2f Baht\nDiff (Baht): %.2f Baht\nDiff (per.): %.2f %s'%(roundDec(price_bnb),roundDec(biannce_thai_rate),roundDec(bnb_bitkub_rate),roundDec(result_bath),roundDec(result_percentage), "%"))
-
-#    if result_percentage >= 5:
-#         messenger.sendtext('เกิน 5 เปอร์เซ็นต์ สามารถทำ Abritage ได้!!')
-#    elif result_percentage >= 3:
-#         messenger.sendtext('เกิน 3 เปอร์เซ็นต์เกือบ Abritage ได้แล้ว')
-#    elif result_percentage >= 1:
-#         messenger.sendtext('เกิน 1 เปอร์เซ็นต์กำลังจะมีโอกาส')
-#    elif result_percentage <= 0.99:
-#         messenger.sendtext('ยังไม่มีโอกาส')
 
 # Read ค่า config
 read_config("./config.ini")
