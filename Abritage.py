@@ -7,7 +7,6 @@
 # 2 ใส่ API และ API Key ของเราลงไป (เฉพาะของฝั่ง Biannce) 
 # 3 รันโปรแกรมแล้วรับแจ้งเตือนได้เลย 
 
-
 from binance import Client
 from forex_python.converter import CurrencyRates
 from songline import Sendline
@@ -90,6 +89,7 @@ def ticker(coin = 'THB_BNB', variable = 'highestBid'): #หาราคาต่
 
 
 def calculate():
+   print ("-----------------")
    prices = client.get_all_tickers()
    mycoin = ['BNBUSDT'] #สามารถใส่ , เพื่อใส่คู่เหรียญอื่นที่ต้องการได้ 
    for loop_price in prices:
@@ -97,35 +97,31 @@ def calculate():
         sym = loop_mycoin
         if loop_price['symbol'] == sym:
             # print(loop_price)
-            price_bnb = float(loop_price['price'])
-            print ("Rate BNB :",price_bnb,'USD')
+            price_bnb = float(loop_price['price'],)
+            # print ("Rate BNB :",price_bnb,'USD')
             biannce_thai_rate = price_bnb * rate_bath
-            print ("Rate BNB (Binance) :",biannce_thai_rate,"Bath")
+            # print ("Rate BNB (Binance) :",biannce_thai_rate,"Bath")
    
-   bnb_bitkub_rate = ticker()
-#    print ("Rate BNB (Bitkub) :",bnb_bitkub_rate,"Bath") 
-   Line_bnb_bitkub_rate = ("Rate BNB (Bitkub) :",bnb_bitkub_rate,"Bath")  
+   bnb_bitkub_rate = ticker() #ได้ค่ามาไว้ในตัวแปร 
+#    print ("Rate BNB (Bitkub) :",bnb_bitkub_rate,"Bath") #ปริ้นออกมาใน Terminal 
 
-   result_bath = bnb_bitkub_rate - biannce_thai_rate
-#    print ("Diff (Bath):",result_bath)
-   Line_result_bath = ("Diff (Bath):",result_bath)
+   result_bath = bnb_bitkub_rate - biannce_thai_rate #ได้ค่ามาไว้ในตัวแปร 
+#    print ("Diff (Bath):",result_bath) #ปริ้นออกมาใน Terminal 
 
-   result_percentage = (((bnb_bitkub_rate - biannce_thai_rate)/biannce_thai_rate)*100)
-   print ("Diff (%):",result_percentage)
-   Line_result_percentage = ("Diff (%):",result_percentage)
+   result_percentage = (((bnb_bitkub_rate - biannce_thai_rate)/biannce_thai_rate)*100) #ได้ค่ามาไว้ในตัวแปร 
+#    print ("Diff (%):",result_percentage) #ปริ้นออกมาใน Terminal  
+#    print ('Rate BNB :',price_bnb,'USD\nRate BNB (Binance) :',biannce_thai_rate,'Bath\nRate BNB (Bitkub) :',bnb_bitkub_rate,'Bath\nDiff (Bath):',result_bath,'\nDiff (%):',result_percentage)
+   print ('Rate BNB : %f USD\nRate BNB (Binance) : %f Bath\nRate BNB (Bitkub) : %f Bath\nDiff (Bath): %f Bath\nDiff (per.): %f '%(price_bnb,biannce_thai_rate,bnb_bitkub_rate,result_bath,result_percentage))
+#    messenger.sendtext('\nRate BNB : %f USD\nRate BNB (Binance) : %f Bath\nRate BNB (Bitkub) : %f Bath\nDiff (Bath) : %f \nDiff (per.) : %f '%(price_bnb,biannce_thai_rate,bnb_bitkub_rate,result_bath,result_percentage))
 
-#    All_text_result = (Line_bnb_bitkub_rate , Line_result_bath ,Line_result_percentage)
-# #    messenger.sendtext(All_text_result)
-# #    messenger.sendtext(Line_bnb_bitkub_rate) 
-
-   if result_percentage >= 5:
-        messenger.sendtext('เกิน 5 เปอร์เซ็นต์ สามารถทำ Abritage ได้!!')
-   elif result_percentage >= 3:
-        messenger.sendtext('เกิน 3 เปอร์เซ็นต์เกือบ Abritage ได้แล้ว')
-   elif result_percentage >= 1:
-        messenger.sendtext('เกิน 1 เปอร์เซ็นต์กำลังจะมีโอกาส')
-   elif result_percentage <= 0.99:
-        messenger.sendtext('ยังไม่มีโอกาส')
+#    if result_percentage >= 5:
+#         messenger.sendtext('เกิน 5 เปอร์เซ็นต์ สามารถทำ Abritage ได้!!')
+#    elif result_percentage >= 3:
+#         messenger.sendtext('เกิน 3 เปอร์เซ็นต์เกือบ Abritage ได้แล้ว')
+#    elif result_percentage >= 1:
+#         messenger.sendtext('เกิน 1 เปอร์เซ็นต์กำลังจะมีโอกาส')
+#    elif result_percentage <= 0.99:
+#         messenger.sendtext('ยังไม่มีโอกาส')
 
 timer(TIME)
 
