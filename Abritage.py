@@ -97,7 +97,7 @@ def calculate():
         sym = loop_mycoin
         if loop_price['symbol'] == sym:
             # print(loop_price)
-            price_bnb = float(loop_price['price'],)
+            price_bnb = float(loop_price['price'])
             # print ("Rate BNB :",price_bnb,'USD')
             biannce_thai_rate = price_bnb * rate_bath
             # print ("Rate BNB (Binance) :",biannce_thai_rate,"Bath")
@@ -112,7 +112,7 @@ def calculate():
 #    print ("Diff (%):",result_percentage) #ปริ้นออกมาใน Terminal  
 #    print ('Rate BNB :',price_bnb,'USD\nRate BNB (Binance) :',biannce_thai_rate,'Bath\nRate BNB (Bitkub) :',bnb_bitkub_rate,'Bath\nDiff (Bath):',result_bath,'\nDiff (%):',result_percentage)
    print ('Rate BNB : %f USD\nRate BNB (Binance) : %f Bath\nRate BNB (Bitkub) : %f Bath\nDiff (Bath): %f Bath\nDiff (per.): %f '%(price_bnb,biannce_thai_rate,bnb_bitkub_rate,result_bath,result_percentage))
-#    messenger.sendtext('\nRate BNB : %f USD\nRate BNB (Binance) : %f Bath\nRate BNB (Bitkub) : %f Bath\nDiff (Bath) : %f \nDiff (per.) : %f '%(price_bnb,biannce_thai_rate,bnb_bitkub_rate,result_bath,result_percentage))
+   messenger.sendtext('\nRate BNB : %f USD\nRate BNB (Binance) : %f Bath\nRate BNB (Bitkub) : %f Bath\nDiff (Bath) : %f \nDiff (per.) : %f '%(price_bnb,biannce_thai_rate,bnb_bitkub_rate,result_bath,result_percentage))
 
 #    if result_percentage >= 5:
 #         messenger.sendtext('เกิน 5 เปอร์เซ็นต์ สามารถทำ Abritage ได้!!')
