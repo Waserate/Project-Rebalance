@@ -1,0 +1,9 @@
+[CONFIG]
+trade_sym = THB_ADA
+time = 1800
+api_key = 9b38595cab407d7bb6ebf5e4fb7d85b4
+api_secret = 202d71b0fc94501e290ac32ca023020c
+line_token = tFPmvE98tU73bmgu5OxfDYcl7K8r8IbjA5OCq7Ql17y
+percent = 1
+last_price = 74.01
+
